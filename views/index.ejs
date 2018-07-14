@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/jscolor.js"></script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <div>
+      <h1>Create an alarm</h1>
+      <form>
+        <div>
+          <p>Select a light:</p>
+          <% lights.forEach(function(light) { %>
+            <input type="radio" id="<%= light.deviceId %>" name="light" />
+            <label for="<%= light.deviceId %>"><%= light._sysinfo.alias %></label>
+            <% }); %>
+          </div>
+          <div>
+            <p>Select a color</p>
+            <input style="font-size: 16px" class="jscolor" value="ab2567">
+          <div>
+            <p>Select a time</p>
+            <input type="time" name="time" />
+          </div>
+          <div>
+            <p>Select ramp up time (minutes)</p>
+            <input type="number" name="ramp-up-time" />
+          </div>
+        </div>
+      </form>
+      <div>Lights:</div>
+      <div><%= JSON.stringify(lights) %></div>
+      <div>Alarms:</div>
+      <div><%= JSON.stringify(alarms) %></div>
+    </div>
+  </body>
+</html>
